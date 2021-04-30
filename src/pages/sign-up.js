@@ -33,7 +33,7 @@ export default function SignUp() {
         });
         // firebase user collection(create a document)
         await firebase.firestore().collection("users").add({
-          userID: createdUserResult.user.uid,
+          userId: createdUserResult.user.uid,
           username: username.toLowerCase(),
           fullName,
           emailAddress: emailAddress.toLowerCase(),
