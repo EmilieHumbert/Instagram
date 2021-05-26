@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 import PropTypes from "prop-types";
-import { Children } from "react";
 import { Route, Redirect } from "react-router-dom";
 
 // rerouting if user doesn't have account
@@ -15,7 +14,7 @@ export default function IsUserLoggedIn({
       {...rest}
       render={({ location }) => {
         if (!user) {
-          return Children;
+          return children;
         }
         if (user) {
           return (
