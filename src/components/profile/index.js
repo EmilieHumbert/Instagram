@@ -40,7 +40,6 @@ export default function UserProfile({ user }) {
         setFollowerCount={dispatch}
       />
       <Photos photos={photosCollection} />
-      <p>Hello {user.username}</p>
     </div>
   );
 }
@@ -54,5 +53,5 @@ UserProfile.propTypes = {
     fullName: PropTypes.string.isRequired,
     userId: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
 };
