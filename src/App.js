@@ -10,6 +10,7 @@ import IsUserLoggedIn from "./helpers/is-user-logged-in";
 const Login = lazy(() => import("./pages/login"));
 const SignUp = lazy(() => import("./pages/sign-up"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
+const Profile = lazy(() => import("./pages/profile"));
 const NotFound = lazy(() => import("./pages/not-found"));
 
 export default function App() {
@@ -20,19 +21,14 @@ export default function App() {
       <Router>
         <Suspense fallback={<p>Loading...</p>}>
           <Switch>
-            <IsUserLoggedIn
-              user={user}
-              loggedInPath={ROUTES.DASHBOARD}
-              path={ROUTES.LOGIN}
-            >
+            <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.LOGIN}>
               <Login />
             </IsUserLoggedIn>
-            <IsUserLoggedIn
-              user={user}
-              loggedInPath={ROUTES.DASHBOARD}
-              path={ROUTES.SIGN_UP}
-            >
+            <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.SIGN_UP}>
               <SignUp />
+            </IsUserLoggedIn>
+            <IsUserLoggedIn path={ROUTES.PROFILE} component={Profile}>
+              <Profile />
             </IsUserLoggedIn>
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
