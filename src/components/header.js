@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import FirebaseContext from "../context/firebase";
@@ -16,7 +17,11 @@ export default function Header() {
           <div className="text-gray-700 text-center flex items-center align-items curser-pointer">
             <h1 className="flex justify-center w-full">
               <Link to={ROUTES.DASHBOARD}>
-                <img src="/images/logo.png" alt="Instagram" className="mt-2 w-20 xs:w-6/12" />
+                <img
+                  src="/images/logo.png"
+                  alt="Instagram"
+                  className="mt-2 w-20 xs:w-6/12"
+                />
               </Link>
             </h1>
           </div>
@@ -71,11 +76,11 @@ export default function Header() {
                 </button>
                 {user && (
                   <div className="flex items-center cursor-pointer">
-                    <Link to={`/p/${user.displayName}`}>
+                    <Link to={`/p/${user?.displayName.toLowerCase()}`}>
                       <img
                         className="rounded-full h-5 w-5 flex"
                         src={`/images/avatars/${user?.displayName.toLowerCase()}.jpg`}
-                        alt={`${user.displayName} profile`}
+                        alt={`${user?.displayName} profile`}
                       />
                     </Link>
                   </div>
