@@ -4,6 +4,9 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
   },
+  purge: {
+    content: ["./src/**/*.js", "./src/**/**/*.js"],
+  },
   theme: {
     screens: {
       xs: "550px",
