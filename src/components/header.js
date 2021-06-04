@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import FirebaseContext from "../context/firebase";
 import UserContext from "../context/user";
 import * as ROUTES from "../constants/routes";
+import { DEFAULT_IMAGE_PATH } from "../constants/paths";
 
 export default function Header() {
   const { firebase } = useContext(FirebaseContext);
@@ -78,9 +79,9 @@ export default function Header() {
                   <div className="flex items-center cursor-pointer">
                     <Link to={`/p/${user?.displayName.toLowerCase()}`}>
                       <img
-                        className="rounded-full h-5 w-5 flex"
-                        src={`/images/avatars/${user?.displayName.toLowerCase()}.jpg`}
-                        alt={`${user?.displayName} profile`}
+                        onError={(e) => {
+                          e.target.src = DEFAULT_IMAGE_PATH;
+                        }}
                       />
                     </Link>
                   </div>
