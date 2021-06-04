@@ -26,7 +26,7 @@ export async function getUserByUsername(username) {
 // get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
   const result = await firebase.firestore().collection("users").where("userId", "==", userId).get();
-  const [user] = result.docs.map((item) => ({
+  const user = result.docs.map((item) => ({
     ...item.data(),
     docId: item.id,
   }));
@@ -94,7 +94,7 @@ export async function getPhotos(userId, following) {
       }
 
       const user = await getUserByUserId(photo.userId);
-      const { username } = user;
+      const { username } = user[0];
 
       return { username, ...photo, userLikedPhoto };
     }),
@@ -102,12 +102,11 @@ export async function getPhotos(userId, following) {
   return photosWithUserDetails;
 }
 
-export async function getUserPhotosByUsername(username) {
-  const [user] = await getUserByUsername(username);
+export async function getUserPhotosByUsername(userId) {
   const result = await firebase
     .firestore()
     .collection("photos")
-    .where("userId", "==", user.userId)
+    .where("userId", "==", userId)
     .get();
 
   return result.docs.map((item) => ({

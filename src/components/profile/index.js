@@ -9,7 +9,7 @@ export default function UserProfile({ user }) {
   const reducer = (state, newState) => ({ ...state, ...newState });
   const initialState = {
     profile: {},
-    photosCollection: [],
+    photosCollection: null,
     followerCount: 0,
   };
 
@@ -20,7 +20,7 @@ export default function UserProfile({ user }) {
 
   useEffect(() => {
     async function getProfileInfoAndPhotos() {
-      const photos = await getUserPhotosByUsername(user.username);
+      const photos = await getUserPhotosByUsername(user.userId);
       dispatch({
         profile: user,
         photosCollection: photos,
@@ -29,7 +29,7 @@ export default function UserProfile({ user }) {
     }
 
     getProfileInfoAndPhotos();
-  }, [user]);
+  }, [user, user.username]);
 
   return (
     <div>
@@ -46,12 +46,12 @@ export default function UserProfile({ user }) {
 
 UserProfile.propTypes = {
   user: PropTypes.shape({
-    dateCreated: PropTypes.number.isRequired,
-    emailAddress: PropTypes.string.isRequired,
-    followers: PropTypes.array.isRequired,
-    following: PropTypes.array.isRequired,
-    fullName: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
+    dateCreated: PropTypes.number,
+    emailAddress: PropTypes.string,
+    followers: PropTypes.array,
+    following: PropTypes.array,
+    fullName: PropTypes.string,
+    userId: PropTypes.string,
+    username: PropTypes.string,
   }),
 };

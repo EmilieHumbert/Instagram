@@ -1,12 +1,11 @@
-import React from "react";
-import useUser from "../../hooks/use-user";
+import { useContext } from "react";
 import User from "./user";
 import Suggestions from "./suggestions";
+import LoggedInUserContext from "../../context/logged-in";
 
 export default function Sidebar() {
-  const {
-    user: { fullName, username, userId, following, docId },
-  } = useUser();
+  const { user: { docId = "", fullName, username, userId, following } = {} } =
+    useContext(LoggedInUserContext);
 
   return (
     <div className="p-4 invisible lg:visible">
