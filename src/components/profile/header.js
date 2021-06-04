@@ -49,7 +49,7 @@ export default function Header({
       <div className="container flex justify-center items-center">
         {profileUsername ? (
           <img
-            className="rounded-full h-40 w-40 flex"
+            className="rounded-full h-20 md:h-32 w-20 md:w-32 flex"
             alt={`${fullName} profile picture`}
             src={`/images/avatars/${profileUsername}.jpg`}
             onError={(e) => {
@@ -82,7 +82,7 @@ export default function Header({
             )
           )}
         </div>
-        <div className="container flex mt-4">
+        <div className="container flex-row md:flex mt-4">
           {!followers || !following ? (
             <Skeleton count={1} width={677} height={24} />
           ) : (

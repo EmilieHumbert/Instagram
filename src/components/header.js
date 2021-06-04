@@ -23,7 +23,7 @@ export default function Header() {
                 <img
                   src="/images/logoInstaClone.png"
                   alt="Instagram"
-                  className="mt-2 w-20 xs:w-6/12"
+                  className="mt-2 w-20 sm:w-40"
                 />
               </Link>
             </h1>
