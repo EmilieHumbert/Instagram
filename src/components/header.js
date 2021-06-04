@@ -21,7 +21,7 @@ export default function Header() {
             <h1 className="flex justify-center w-full">
               <Link to={ROUTES.DASHBOARD} aria-label="Instagram logo">
                 <img
-                  src="/images/logo.png"
+                  src="/images/logoInstaClone.png"
                   alt="Instagram"
                   className="mt-2 w-20 xs:w-6/12"
                 />
